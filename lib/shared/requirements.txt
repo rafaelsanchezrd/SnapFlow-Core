@@ -1,0 +1,22 @@
+# SnapFlow Core Dependencies
+
+# Encryption
+cryptography>=3.4.8
+
+# HTTP requests
+requests>=2.25.0
+
+# Dropbox SDK
+dropbox>=11.0.0
+
+# Memory monitoring (optional but recommended)
+psutil>=5.8.0
+
+# Google Drive SDK
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.0
+google-api-python-client>=2.100.0
+
+# EXIF extraction (only needed for bracket-generator function)
+# exifread>=3.0.0

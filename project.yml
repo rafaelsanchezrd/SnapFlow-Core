@@ -1,0 +1,49 @@
+packages:
+  - name: snapflow
+    # Shared environment variables for all functions
+    environment: &shared-env
+      # Client-specific encryption keys (Fernet)
+      CLIENT_001_ENCRYPTION_KEY: "NUqnt-OjPHbgK_qD8ZUrUB37IocufEE78d6-C8mZ_XI="
+      CLIENT_002_ENCRYPTION_KEY: "ef88ItkRGVjBKuDcAKupGJnr58t8Sjr7ZSG9WLyrXRA="
+      # Add more clients as needed:
+      # CLIENT_003_ENCRYPTION_KEY: "your-key-here"
+      # CLIENT_004_ENCRYPTION_KEY: "your-key-here"
+      
+    functions:
+      - name: gateway
+        runtime: 'python:3.11'
+        web: true
+        limits:
+          memory: 512
+          timeout: 60000
+        environment:
+          <<: *shared-env
+          PROCESS_FUNCTION_URL: "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-cc8fc781-2529-45ec-abaa-69810a7992a3/snapflow/process"
+          
+      - name: process
+        runtime: 'python:3.11'
+        web: true
+        limits:
+          memory: 1024
+          timeout: 900000
+        environment:
+          <<: *shared-env
+          FINALIZE_FUNCTION_URL: "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-cc8fc781-2529-45ec-abaa-69810a7992a3/snapflow/finalize"
+          
+      - name: finalize
+        runtime: 'python:3.11'
+        web: true
+        limits:
+          memory: 1024
+          timeout: 900000
+        environment:
+          <<: *shared-env
+          
+      - name: discovery
+        runtime: 'python:3.11'
+        web: true
+        limits:
+          memory: 1024
+          timeout: 300000
+        environment:
+          <<: *shared-env
