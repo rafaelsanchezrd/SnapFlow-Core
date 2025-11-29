@@ -16,30 +16,30 @@ Multi-provider photo enhancement pipeline for DigitalOcean Functions.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                            Make.com Workflow                             │
+│                            Make.com Workflow                            │
 └─────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         BRACKET GENERATION PHASE                         │
+│                         BRACKET GENERATION PHASE                        │
 │  ┌──────────────────┐    ┌──────────────────┐    ┌───────────────────┐  │
-│  │ bracket-generator│───▶│ bracket-generator│───▶│    intelligent-   │  │
+│  │bracket-generator│───▶│ bracket-generator│───▶│    intelligent-   │  │
 │  │   (discovery)    │    │  (process_page)  │    │     bracketing    │  │
 │  └──────────────────┘    └──────────────────┘    └───────────────────┘  │
 └─────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼ brackets_data
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                          ENHANCEMENT PHASE                               │
+│                          ENHANCEMENT PHASE                              │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐               │
-│  │   gateway    │───▶│   process    │───▶│   finalize   │               │
+│  │  gateway    │───▶│   process    │───▶│   finalize   │               │
 │  │ (validation) │    │  (enhance)   │    │  (delivery)  │               │
 │  └──────────────┘    └──────────────┘    └──────────────┘               │
 └─────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Enhanced Photos in Storage Provider                   │
+│                    Enhanced Photos in Storage Provider                  │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
